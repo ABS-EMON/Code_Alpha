@@ -1,0 +1,61 @@
+import time
+
+def simulate_typing(text, delay=0.03):
+    for char in text:
+        print(char, end="", flush=True)
+        time.sleep(delay)
+    print()
+
+def chatbot():
+    simulate_typing("🤖 Chatbot: Hello! I'm EmonBot, your virtual assistant. Type 'bye' to end the chat.")
+    while True:
+        user_input = input("You: ").lower()
+
+        if "hello" in user_input or "hi" in user_input:
+            simulate_typing("Chatbot: Hi there! How can I help you today?")
+
+        elif "how are you" in user_input:
+            simulate_typing("Chatbot: I'm doing great! Thanks for asking. What about you?")
+
+        elif "your name" in user_input:
+            simulate_typing("Chatbot: I'm EmonBot, your friendly chatbot 🤖.")
+
+        elif "what can you do" in user_input or "features" in user_input:
+            simulate_typing("Chatbot: I can help answer your questions, simulate web searches, and more!")
+
+        elif "time" in user_input:
+            from datetime import datetime
+            now = datetime.now()
+            simulate_typing(f"Chatbot: Current time is {now.strftime('%I:%M %p')}")
+
+        elif "date" in user_input:
+            from datetime import datetime
+            today = datetime.today()
+            simulate_typing(f"Chatbot: Today's date is {today.strftime('%B %d, %Y')}")
+
+        elif "youtube" in user_input:
+            simulate_typing("Chatbot: 🔍 Searching on YouTube...")
+            simulate_typing("Chatbot: You can try this link: https://www.youtube.com/results?search_query=" + user_input.replace(" ", "+"))
+
+        elif "wikipedia" in user_input or "wiki" in user_input:
+            simulate_typing("Chatbot: 🧠 Searching on Wikipedia...")
+            simulate_typing("Chatbot: Check this out: https://en.wikipedia.org/wiki/" + user_input.replace(" ", "_"))
+
+        elif "google" in user_input or "search" in user_input:
+            simulate_typing("Chatbot: 🌐 Searching on Google...")
+            simulate_typing("Chatbot: Try this link: https://www.google.com/search?q=" + user_input.replace(" ", "+"))
+
+        elif "who are you" in user_input:
+            simulate_typing("Chatbot: I'm a Python-powered chatbot created to help and chat with you!")
+
+        elif "thank you" in user_input or "thanks" in user_input:
+            simulate_typing("Chatbot: You're welcome! 😊")
+
+        elif "bye" in user_input or "exit" in user_input:
+            simulate_typing("Chatbot: Goodbye! 👋 Have a nice day!")
+            break
+
+        else:
+            simulate_typing("Chatbot: I'm not sure about that. Try asking about time, date, search, YouTube, or Wikipedia.")
+
+chatbot()
